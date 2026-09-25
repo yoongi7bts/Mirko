@@ -3,355 +3,137 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Para Mirko David</title>
+<title>Para Mirko David ❤️</title>
 
 <style>
-* {
-    box-sizing: border-box;
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
 }
 
-body {
-    margin: 0;
-    background: #080808;
-    color: #f1e7d0;
-    font-family: Georgia, serif;
-    overflow-x: hidden;
+body{
+    min-height:100vh;
+    background:
+        radial-gradient(circle at center, #3a1825 0%, #180b13 45%, #080509 100%);
+    color:white;
+    font-family:Georgia, serif;
+    overflow-x:hidden;
 }
 
-/* PANTALLA INICIAL */
+/* ================= INICIO ================= */
 
-#inicio {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    padding: 25px;
+#inicio{
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:25px;
+    position:relative;
+    overflow:hidden;
 }
 
-.estrella {
-    color: #d8c28f;
-    font-size: 45px;
-    text-shadow: 0 0 20px #d8c28f;
-    animation: brillo 2s infinite alternate;
+#inicio h1{
+    font-size:clamp(2.2rem,9vw,4rem);
+    margin-bottom:15px;
+    text-shadow:0 0 25px rgba(255,150,190,.7);
 }
 
-h1 {
-    font-size: 32px;
-    font-weight: normal;
-    margin: 18px 0 10px;
+#inicio p{
+    font-family:Arial,sans-serif;
+    font-size:1rem;
+    opacity:.85;
+    margin-bottom:35px;
 }
 
-.subtitulo {
-    color: #bdb5a5;
-    margin-bottom: 30px;
+.boton{
+    border:1px solid rgba(255,255,255,.5);
+    background:rgba(255,255,255,.08);
+    color:white;
+    padding:15px 30px;
+    border-radius:40px;
+    font-size:1rem;
+    cursor:pointer;
+    backdrop-filter:blur(10px);
+    box-shadow:0 0 25px rgba(255,100,160,.25);
+    transition:.3s;
 }
 
-button {
-    background: transparent;
-    color: #f1e7d0;
-    border: 1px solid #c9b58a;
-    padding: 14px 28px;
-    border-radius: 30px;
-    font-family: Georgia, serif;
-    font-size: 16px;
-    cursor: pointer;
+.boton:active{
+    transform:scale(.94);
 }
 
-/* CONTENIDO */
+/* ================= CONTENIDO ================= */
 
-#contenido {
-    display: none;
-    min-height: 100vh;
-    text-align: center;
-    padding: 65px 12px;
+#contenido{
+    display:none;
+    min-height:100vh;
+    padding:45px 10px 80px;
+    text-align:center;
 }
 
-.titulo {
-    font-size: 30px;
-    font-weight: normal;
+.titulo{
+    font-size:clamp(2rem,8vw,3.5rem);
+    margin-bottom:8px;
+    text-shadow:0 0 25px rgba(255,130,180,.6);
 }
 
-.frase-intro {
-    color: #bdb5a5;
-    margin-bottom: 40px;
+.subtitulo{
+    font-family:Arial,sans-serif;
+    opacity:.75;
+    margin-bottom:20px;
 }
 
-/* LUCES */
+/* ================= CORAZÓN ================= */
 
-.luces {
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    overflow: hidden;
-    z-index: -1;
+.corazon{
+    width:min(94vw,520px);
+    height:min(94vw,520px);
+    margin:20px auto 45px;
+    position:relative;
+
+    perspective:1200px;
+    transform-style:preserve-3d;
+
+    filter:drop-shadow(0 0 30px rgba(255,50,130,.25));
 }
 
-.luz {
-    position: absolute;
-    width: 5px;
-    height: 5px;
-    border-radius: 50%;
-    background: #d8c28f;
-    animation: flotar 6s linear infinite;
-}
+/* Cada foto */
 
-.luz:nth-child(1) { left: 10%; animation-delay: 0s; }
-.luz:nth-child(2) { left: 25%; animation-delay: 2s; }
-.luz:nth-child(3) { left: 40%; animation-delay: 4s; }
-.luz:nth-child(4) { left: 60%; animation-delay: 1s; }
-.luz:nth-child(5) { left: 75%; animation-delay: 3s; }
-.luz:nth-child(6) { left: 90%; animation-delay: 5s; }
+.foto{
+    position:absolute;
+    width:25%;
+    aspect-ratio:1/1;
 
-@keyframes flotar {
-    from {
-        top: 100%;
-        opacity: 0;
-    }
+    transform-style:preserve-3d;
+    transition:
+        transform .12s ease-out,
+        box-shadow .2s ease;
 
-    20% {
-        opacity: 1;
-    }
+    border-radius:14px;
+    overflow:hidden;
 
-    to {
-        top: -10%;
-        opacity: 0;
-    }
-}
-
-/* GALERÍA */
-
-.galeria {
-    width: 94%;
-    max-width: 430px;
-    margin: auto;
-
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 7px;
-
-    perspective: 900px;
-}
-
-.foto {
-    aspect-ratio: 1 / 1;
-    overflow: hidden;
-    border-radius: 9px;
-    border: 1px solid #8d7950;
-    background: #151515;
+    border:3px solid rgba(255,255,255,.75);
 
     box-shadow:
-        0 8px 18px rgba(0,0,0,.7),
-        0 0 12px rgba(216,194,143,.15);
+        0 10px 25px rgba(0,0,0,.55),
+        0 0 18px rgba(255,100,160,.2);
 
-    transition: transform .25s ease;
+    background:#211018;
 }
 
-.foto img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
+.foto img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+
+    transform:translateZ(12px);
 }
 
-/* EFECTO 3D */
+/* Posiciones para formar el corazón */
 
-.foto:active {
-    transform: scale(.93) rotateX(5deg) rotateY(8deg);
-}
-
-/* MENSAJE */
-
-.carta {
-    max-width: 650px;
-    margin: 65px auto 0;
-    padding: 30px 20px;
-    border-top: 1px solid #6f6044;
-    border-bottom: 1px solid #6f6044;
-}
-
-.carta h2 {
-    font-size: 25px;
-    font-weight: normal;
-}
-
-.carta p {
-    color: #c8c0b2;
-    font-size: 17px;
-    line-height: 1.8;
-}
-
-.final {
-    color: #d8c28f;
-    font-size: 28px;
-    margin-top: 40px;
-}
-
-@keyframes brillo {
-    from {
-        opacity: .4;
-        transform: scale(.9);
-    }
-
-    to {
-        opacity: 1;
-        transform: scale(1.1);
-    }
-}
-
-/* CELULAR */
-
-@media (max-width: 430px) {
-    h1 {
-        font-size: 28px;
-    }
-
-    .titulo {
-        font-size: 27px;
-    }
-
-    .galeria {
-        gap: 5px;
-    }
-}
-</style>
-</head>
-
-
-<body>
-
-<!-- LUCES -->
-
-<div class="luces">
-    <div class="luz"></div>
-    <div class="luz"></div>
-    <div class="luz"></div>
-    <div class="luz"></div>
-    <div class="luz"></div>
-    <div class="luz"></div>
-</div>
-
-
-<!-- INICIO -->
-
-<section id="inicio">
-
-    <div class="estrella">✦</div>
-
-    <h1>Para Mirko David</h1>
-
-    <p class="subtitulo">
-        Tengo algo preparado para ti
-    </p>
-
-    <button type="button" onclick="abrirPagina()">
-        Toca para comenzar
-    </button>
-
-</section>
-
-
-<!-- CONTENIDO -->
-
-<section id="contenido">
-
-    <div class="estrella">✦</div>
-
-    <h1 class="titulo">
-        Feliz cumpleaños, Mirko 🎂
-    </h1>
-
-    <p class="frase-intro">
-        Hay personas que merecen una pequeña sorpresa.
-    </p>
-
-
-    <div class="galeria">
-
-        <div class="foto">
-            <img src="4e2ea9b51d95d24c962bd61b826a54ff.jpg">
-        </div>
-
-        <div class="foto">
-            <img src="56114d0177bd2e3e569f2fa9ea031113.jpg">
-        </div>
-
-        <div class="foto">
-            <img src="5f0af6b6c19d752a661470db74b17970.jpg">
-        </div>
-
-        <div class="foto">
-            <img src="627b38dd8ad4ca20763cb876165334cd.jpg">
-        </div>
-
-        <div class="foto">
-            <img src="6e6ca410236b27f9fed21dd01edadd4f.jpg">
-        </div>
-
-        <div class="foto">
-            <img src="765428eaccf9cc88c89561f66c6caaa3.jpg">
-        </div>
-
-        <div class="foto">
-            <img src="88eda346447054697a298be3475f9c28.jpg">
-        </div>
-
-        <div class="foto">
-            <img src="983391e84e170b9e679d3c93299d3378.jpg">
-        </div>
-
-        <div class="foto">
-            <img src="9d63ef60e34a1d38775b53bb556f37bb.jpg">
-        </div>
-
-        <div class="foto">
-            <img src="a7e6280c61ff034fecc98313413907cc.jpg">
-        </div>
-
-        <div class="foto">
-            <img src="a93d92fd412eee58e485b6592964344e.jpg">
-        </div>
-
-        <div class="foto">
-            <img src="a9d7e60f4ec590ca3e076f54bb25734c.jpg">
-        </div>
-
-        <div class="foto">
-            <img src="d34f514777d26503d5c6d17d656ff21b.jpg">
-        </div>
-
-    </div>
-
-
-    <div class="carta">
-
-        <h2>Un pequeño mensaje</h2>
-
-        <p>
-            Espero que tengas muchos momentos felices,
-            nuevas experiencias y muchas razones para sonreír.
-        </p>
-
-        <div class="final">✦</div>
-
-    </div>
-
-</section>
-
-
-<script>
-
-function abrirPagina() {
-
-    document.getElementById("inicio").style.display = "none";
-
-    document.getElementById("contenido").style.display = "block";
-
-    window.scrollTo(0, 0);
-}
-
-</script>
-
-</body>
-</html>
+.f1{left:20%; top:8%; transform:translate(-50%,-50%);}
+.f2{left:40
