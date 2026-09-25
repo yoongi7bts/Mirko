@@ -2,97 +2,593 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Para Mirko David</title>
 
 <style>
 *{
-    box-sizing:border-box;
-    margin:0;
-    padding:0;
-}
-
-html{
-    scroll-behavior:smooth;
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
 }
 
 body{
-    min-height:100vh;
-    overflow-x:hidden;
-    font-family:Georgia,serif;
-    color:white;
-    background:
-        radial-gradient(circle at 50% 20%,#70485c 0%,#302038 28%,#11101d 65%,#05050b 100%);
+  min-height:100vh;
+  overflow-x:hidden;
+  color:white;
+  font-family:Georgia,serif;
+  background:
+    radial-gradient(circle at 50% 20%,#70475d,#292038 35%,#080812 80%);
 }
 
-/* =========================
-   FONDO ANIMADO
-========================= */
-
-body::before{
-    content:"";
-    position:fixed;
-    inset:-30%;
-    z-index:-5;
-    background:
-        radial-gradient(circle,#e7b5c9 0 1px,transparent 2px),
-        radial-gradient(circle,#fff 0 1px,transparent 2px);
-    background-size:90px 90px,140px 140px;
-    opacity:.35;
-    animation:universo 30s linear infinite;
-}
-
-@keyframes universo{
-    from{
-        transform:translate(0,0) rotate(0deg);
-    }
-    to{
-        transform:translate(80px,100px) rotate(8deg);
-    }
-}
-
-/* =========================
-   PANTALLA INICIAL
-========================= */
+/* ===== INICIO ===== */
 
 #inicio{
-    min-height:100vh;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
-    text-align:center;
-    padding:25px;
-    position:relative;
-    overflow:hidden;
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:25px;
+}
+
+.corazon{
+  position:relative;
+  width:85px;
+  height:85px;
+  background:#ed91b0;
+  transform:rotate(-45deg);
+  animation:latido 1.2s infinite;
+  box-shadow:0 0 30px #ff9cbd,0 0 80px #e65d91;
+  margin-bottom:35px;
+}
+
+.corazon:before,
+.corazon:after{
+  content:"";
+  position:absolute;
+  width:85px;
+  height:85px;
+  background:#ed91b0;
+  border-radius:50%;
+}
+
+.corazon:before{
+  top:-42px;
+  left:0;
+}
+
+.corazon:after{
+  top:0;
+  left:42px;
+}
+
+@keyframes latido{
+  0%,100%{transform:rotate(-45deg) scale(1)}
+  50%{transform:rotate(-45deg) scale(1.15)}
 }
 
 #inicio h1{
-    font-size:36px;
-    margin:18px 0 12px;
-    text-shadow:
-        0 0 10px rgba(255,220,235,.8),
-        0 0 30px rgba(255,150,190,.5);
-    animation:aparecer 2s ease;
+  font-size:36px;
+  margin-bottom:12px;
+  text-shadow:0 0 20px #ffb9d0;
 }
 
 #inicio p{
-    font-size:18px;
-    opacity:.9;
-    margin-bottom:30px;
-    animation:aparecer 3s ease;
+  margin-bottom:30px;
+  opacity:.85;
 }
 
-/* CORAZÓN */
+.boton{
+  padding:16px 30px;
+  border:0;
+  border-radius:30px;
+  background:#f2d2df;
+  color:#301c28;
+  font-weight:bold;
+  font-size:17px;
+  box-shadow:0 0 25px #f2a9c5;
+}
 
-.corazonInicio{
-    width:90px;
-    height:90px;
-    position:relative;
-    transform:rotate(-45deg);
-    background:#e98cae;
-    margin-top:10px;
-    animation:
-        latido 1.2s infinite,
-        brilloCorazon
+/* ===== CONTENIDO ===== */
+
+#contenido{
+  display:none;
+  min-height:100vh;
+  padding:40px 8px 70px;
+  text-align:center;
+}
+
+.titulo{
+  font-size:30px;
+  text-shadow:0 0 20px #ffb5cf;
+}
+
+.subtitulo{
+  margin:10px 0 30px;
+  opacity:.75;
+}
+
+/* ===== FOTOS ===== */
+
+.galeria{
+  position:relative;
+  width:360px;
+  max-width:96vw;
+  height:390px;
+  margin:auto;
+}
+
+.foto{
+  position:absolute;
+  width:88px;
+  height:105px;
+  object-fit:cover;
+  border-radius:13px;
+  border:4px solid white;
+  cursor:pointer;
+  box-shadow:0 0 15px #ffffff55,0 8px 20px #0009;
+  transition:.35s;
+}
+
+.foto:hover{
+  transform:scale(1.12)!important;
+  z-index:20;
+  box-shadow:0 0 30px #ffb3cf;
+}
+
+/* POSICIONES */
+
+.f1{left:70px;top:15px;transform:rotate(-12deg)}
+.f2{left:202px;top:15px;transform:rotate(12deg)}
+.f3{left:25px;top:75px;transform:rotate(-8deg)}
+.f4{left:92px;top:70px;transform:rotate(-3deg)}
+.f5{left:158px;top:70px;transform:rotate(3deg)}
+.f6{left:225px;top:75px;transform:rotate(8deg)}
+.f7{left:5px;top:140px;transform:rotate(-8deg)}
+.f8{left:72px;top:140px;transform:rotate(-3deg)}
+.f9{left:138px;top:140px;transform:rotate(2deg)}
+.f10{left:204px;top:140px;transform:rotate(4deg)}
+.f11{left:271px;top:140px;transform:rotate(8deg)}
+.f12{left:55px;top:210px;transform:rotate(-7deg)}
+.f13{left:205px;top:210px;transform:rotate(7deg)}
+
+/* ===== MENSAJE ===== */
+
+.mensaje{
+  max-width:500px;
+  margin:10px auto;
+  padding:25px;
+  border-radius:22px;
+  background:#ffffff10;
+  border:1px solid #ffffff25;
+  backdrop-filter:blur(10px);
+  line-height:1.7;
+}
+
+/* =================================================
+   UNIVERSO
+================================================= */
+
+#universo{
+  position:fixed;
+  inset:0;
+  z-index:999;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+
+  background:
+    radial-gradient(circle at center,#34204f 0%,#120c25 35%,#03030b 80%);
+}
+
+#universo.activo{
+  display:flex;
+  animation:entradaUniverso .6s ease;
+}
+
+@keyframes entradaUniverso{
+  from{
+    opacity:0;
+    transform:scale(.8);
+  }
+  to{
+    opacity:1;
+    transform:scale(1);
+  }
+}
+
+/* galaxias */
+
+.galaxia{
+  position:absolute;
+  width:600px;
+  height:600px;
+  border-radius:50%;
+
+  background:
+    radial-gradient(
+      ellipse,
+      transparent 25%,
+      #9d5ac044 40%,
+      #df7ebc22 55%,
+      transparent 70%
+    );
+
+  filter:blur(3px);
+  animation:girar 15s linear infinite;
+}
+
+.galaxia2{
+  width:900px;
+  height:300px;
+  transform:rotate(-25deg);
+  background:
+    radial-gradient(
+      ellipse,
+      transparent 20%,
+      #6d8dff33 45%,
+      #e67bd522 60%,
+      transparent 75%
+    );
+  animation:girar2 20s linear infinite;
+}
+
+@keyframes girar{
+  to{transform:rotate(360deg)}
+}
+
+@keyframes girar2{
+  to{transform:rotate(-385deg)}
+}
+
+/* estrellas */
+
+.estrella{
+  position:absolute;
+  width:3px;
+  height:3px;
+  background:white;
+  border-radius:50%;
+  box-shadow:0 0 8px white;
+  animation:brillar 1.5s infinite alternate;
+}
+
+@keyframes brillar{
+  from{opacity:.2;transform:scale(.5)}
+  to{opacity:1;transform:scale(1.8)}
+}
+
+/* foto grande */
+
+#fotoGrande{
+  position:relative;
+  z-index:10;
+  width:min(82vw,390px);
+  max-height:70vh;
+  object-fit:contain;
+
+  border:6px solid white;
+  border-radius:20px;
+
+  box-shadow:
+    0 0 20px white,
+    0 0 50px #ff9fc6,
+    0 0 120px #a86cff;
+
+  animation:fotoUniverso .8s cubic-bezier(.17,.67,.3,1.3);
+}
+
+@keyframes fotoUniverso{
+  from{
+    transform:scale(.1) rotate(-15deg);
+    opacity:0;
+  }
+  to{
+    transform:scale(1) rotate(0);
+    opacity:1;
+  }
+}
+
+/* botón cerrar */
+
+#cerrar{
+  position:absolute;
+  z-index:30;
+  top:20px;
+  right:20px;
+
+  width:48px;
+  height:48px;
+  border:1px solid #ffffff55;
+  border-radius:50%;
+
+  background:#ffffff18;
+  color:white;
+  font-size:28px;
+  backdrop-filter:blur(10px);
+}
+
+/* texto universo */
+
+#textoUniverso{
+  position:absolute;
+  z-index:20;
+  bottom:55px;
+  left:20px;
+  right:20px;
+  text-align:center;
+  font-size:18px;
+  text-shadow:0 0 10px #000;
+}
+
+/* corazones flotando */
+
+.miniCorazon{
+  position:absolute;
+  color:#ff9fc4;
+  font-size:20px;
+  animation:flotar 4s linear infinite;
+  text-shadow:0 0 12px #ff7eae;
+}
+
+@keyframes flotar{
+  from{
+    transform:translateY(110vh) rotate(0);
+    opacity:0;
+  }
+  20%{opacity:1}
+  to{
+    transform:translateY(-20vh) rotate(180deg);
+    opacity:0;
+  }
+}
+
+@media(max-width:390px){
+  .galeria{
+    transform:scale(.88);
+    transform-origin:top center;
+    margin-bottom:-35px;
+  }
+
+  .titulo{
+    font-size:27px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- INICIO -->
+
+<section id="inicio">
+
+  <div class="corazon"></div>
+
+  <h1>Para Mirko David</h1>
+
+  <p>Tengo algo especial para ti...</p>
+
+  <button class="boton" onclick="comenzar()">
+    Toca para iniciar
+  </button>
+
+</section>
+
+
+<!-- CONTENIDO -->
+
+<section id="contenido">
+
+  <h1 class="titulo">
+    Feliz cumpleaños, Mirko
+  </h1>
+
+  <p class="subtitulo">
+    Un pequeño recuerdo hecho especialmente para ti.
+  </p>
+
+
+  <div class="galeria">
+
+    <img class="foto f1"
+      src="4e2ea9b51d95d24c962bd61b826a54ff.jpg">
+
+    <img class="foto f2"
+      src="56114d0177bd2e3e569f2fa9ea031113.jpg">
+
+    <img class="foto f3"
+      src="5f0af6b6c19d752a661470db74b17970.jpg">
+
+    <img class="foto f4"
+      src="627b38dd8ad4ca20763cb876165334cd.jpg">
+
+    <img class="foto f5"
+      src="6e6ca410236b27f9fed21dd01edadd4f.jpg">
+
+    <img class="foto f6"
+      src="765428eaccf9cc88c89561f66c6caaa3.jpg">
+
+    <img class="foto f7"
+      src="88eda346447054697a298be3475f9c28.jpg">
+
+    <img class="foto f8"
+      src="983391e84e170b9e679d3c93299d3378.jpg">
+
+    <img class="foto f9"
+      src="9d63ef60e34a1d38775b53bb556f37bb.jpg">
+
+    <img class="foto f10"
+      src="a7e6280c61ff034fecc98313413907cc.jpg">
+
+    <img class="foto f11"
+      src="a93d92fd412eee58e485b6592964344e.jpg">
+
+    <img class="foto f12"
+      src="a9d7e60f4ec590ca3e076f54bb25734c.jpg">
+
+    <img class="foto f13"
+      src="d34f514777d26503d5c6d17d656ff21b.jpg">
+
+  </div>
+
+
+  <div class="mensaje">
+    <p>
+      Espero que este nuevo año de tu vida esté lleno
+      de momentos bonitos, nuevas experiencias y muchas
+      razones para sonreír.
+    </p>
+
+    <br>
+
+    <p>
+      Feliz cumpleaños, Mirko David. 🎂
+    </p>
+  </div>
+
+</section>
+
+
+<!-- UNIVERSO -->
+
+<div id="universo">
+
+  <div class="galaxia"></div>
+  <div class="galaxia galaxia2"></div>
+
+  <button id="cerrar" onclick="cerrarUniverso()">×</button>
+
+  <img id="fotoGrande" src="">
+
+  <div id="textoUniverso">
+    ✨ Un recuerdo especial ✨
+  </div>
+
+</div>
+
+
+<script>
+
+/* iniciar */
+
+function comenzar(){
+
+  document.getElementById("inicio").style.display="none";
+
+  document.getElementById("contenido").style.display="block";
+
+}
+
+
+/* ===== ABRIR UNIVERSO ===== */
+
+const fotos=document.querySelectorAll(".foto");
+
+fotos.forEach(function(foto){
+
+  foto.addEventListener("click",function(){
+
+    const universo=document.getElementById("universo");
+
+    const fotoGrande=document.getElementById("fotoGrande");
+
+    fotoGrande.src=this.src;
+
+    universo.classList.add("activo");
+
+    crearEstrellas();
+
+    crearCorazones();
+
+  });
+
+});
+
+
+/* ===== CERRAR ===== */
+
+function cerrarUniverso(){
+
+  document.getElementById("universo").classList.remove("activo");
+
+  document.getElementById("fotoGrande").src="";
+
+}
+
+
+/* ===== ESTRELLAS ===== */
+
+function crearEstrellas(){
+
+  const universo=document.getElementById("universo");
+
+  document.querySelectorAll(".estrella").forEach(e=>e.remove());
+
+  for(let i=0;i<90;i++){
+
+    const estrella=document.createElement("div");
+
+    estrella.className="estrella";
+
+    estrella.style.left=Math.random()*100+"%";
+
+    estrella.style.top=Math.random()*100+"%";
+
+    estrella.style.animationDelay=
+      Math.random()*2+"s";
+
+    universo.appendChild(estrella);
+  }
+}
+
+
+/* ===== CORAZONES ===== */
+
+function crearCorazones(){
+
+  const universo=document.getElementById("universo");
+
+  document.querySelectorAll(".miniCorazon")
+    .forEach(e=>e.remove());
+
+  for(let i=0;i<15;i++){
+
+    const corazon=document.createElement("div");
+
+    corazon.className="miniCorazon";
+
+    corazon.innerHTML=
+      Math.random()>.5 ? "♥" : "✦";
+
+    corazon.style.left=
+      Math.random()*100+"%";
+
+    corazon.style.animationDuration=
+      (3+Math.random()*4)+"s";
+
+    corazon.style.animationDelay=
+      Math.random()*3+"s";
+
+    universo.appendChild(corazon);
+  }
+}
+
+
+/* ===== ESCAPE ===== */
+
+document.addEventListener("keydown",function(e){
+
+  if(e.key==="Escape"){
+    cerrarUniverso();
+  }
+
+});
+
+</script>
+
+</body>
+</html>
