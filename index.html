@@ -1,290 +1,478 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Para Mirko David</title>
 
-    <title>Para Mirko David</title>
+<style>
+* {
+    box-sizing: border-box;
+}
 
-    <style>
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    min-height: 100%;
+}
 
-        * {
-            box-sizing: border-box;
-        }
+body {
+    background:
+        radial-gradient(circle at 50% 20%, #292216 0%, #0b0b0b 45%, #050505 100%);
+    color: #f1e7d0;
+    font-family: Georgia, serif;
+    overflow-x: hidden;
+}
 
-        body {
-            margin: 0;
-            background: #090909;
-            color: #f1e7d0;
-            font-family: Georgia, serif;
-            overflow-x: hidden;
-        }
+/* PARTICULAS */
 
-        #inicio {
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-        }
+.particulas {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 0;
+}
 
-        .estrella {
-            font-size: 42px;
-            color: #d8c28f;
-            animation: brillo 2s infinite alternate;
-        }
+.particula {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: #d8c28f;
+    border-radius: 50%;
+    opacity: 0;
+    animation: subir 7s linear infinite;
+}
 
-        h1 {
-            font-size: 32px;
-            font-weight: normal;
-            margin: 15px 0 10px;
-        }
+.particula:nth-child(1) { left: 10%; animation-delay: 0s; }
+.particula:nth-child(2) { left: 25%; animation-delay: 2s; }
+.particula:nth-child(3) { left: 40%; animation-delay: 4s; }
+.particula:nth-child(4) { left: 55%; animation-delay: 1s; }
+.particula:nth-child(5) { left: 70%; animation-delay: 3s; }
+.particula:nth-child(6) { left: 85%; animation-delay: 5s; }
+.particula:nth-child(7) { left: 50%; animation-delay: 6s; }
 
-        .subtitulo {
-            color: #bdb5a5;
-            font-size: 16px;
-            margin-bottom: 30px;
-        }
+@keyframes subir {
+    0% {
+        transform: translateY(110vh) scale(.4);
+        opacity: 0;
+    }
 
-        button {
-            background: transparent;
-            color: #f1e7d0;
-            border: 1px solid #c9b58a;
-            padding: 13px 28px;
-            border-radius: 30px;
-            font-size: 16px;
-            font-family: Georgia, serif;
-            cursor: pointer;
-        }
+    15% {
+        opacity: .8;
+    }
 
-        button:active {
-            transform: scale(0.94);
-        }
+    80% {
+        opacity: .5;
+    }
 
-        #contenido {
-            display: none;
-            min-height: 100vh;
-            text-align: center;
-            padding: 70px 10px;
-        }
+    100% {
+        transform: translateY(-10vh) scale(1.2);
+        opacity: 0;
+    }
+}
 
-        .titulo {
-            font-size: 30px;
-            font-weight: normal;
-        }
+/* INICIO */
 
-        .frase-intro {
-            color: #bdb5a5;
-            margin-top: 10px;
-            margin-bottom: 45px;
-        }
+#inicio {
+    position: relative;
+    z-index: 2;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 25px;
+}
 
-        /* CORAZÓN */
+.estrella {
+    color: #d8c28f;
+    font-size: 45px;
+    animation: brillo 2s infinite alternate;
+    text-shadow: 0 0 18px rgba(216,194,143,.5);
+}
 
-        .corazon {
-            width: 100%;
-            max-width: 420px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(8, 1fr);
-            gap: 5px;
-            align-items: center;
-        }
+h1 {
+    font-size: 32px;
+    font-weight: normal;
+    margin: 18px 0 10px;
+}
 
-        .foto {
-            width: 100%;
-            aspect-ratio: 1 / 1;
-            border-radius: 8px;
-            overflow: hidden;
-            background: #171717;
-            border: 1px solid #8d7950;
+.subtitulo {
+    color: #bdb5a5;
+    font-size: 16px;
+    margin-bottom: 32px;
+}
 
-            box-shadow:
-                0 8px 15px rgba(0,0,0,0.6),
-                0 0 10px rgba(201,181,138,0.12);
+button {
+    background: rgba(20,20,20,.6);
+    color: #f1e7d0;
+    border: 1px solid #c9b58a;
+    padding: 14px 28px;
+    border-radius: 30px;
+    font-size: 16px;
+    font-family: Georgia, serif;
+    box-shadow: 0 0 20px rgba(201,181,138,.12);
+    transition: .3s;
+}
 
-            animation: flotar 4s ease-in-out infinite;
-        }
+button:active {
+    transform: scale(.92);
+}
 
-        .foto img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-        }
+/* CONTENIDO */
 
-        .vacio {
-            visibility: hidden;
-        }
+#contenido {
+    display: none;
+    position: relative;
+    z-index: 2;
+    min-height: 100vh;
+    text-align: center;
+    padding: 65px 12px;
+}
 
-        /* POSICIONES DEL CORAZÓN */
+.titulo {
+    font-size: 30px;
+    animation: aparecer 1.5s ease;
+}
 
-        .p1 { grid-column: 2; grid-row: 1; }
-        .p2 { grid-column: 3; grid-row: 1; }
+.frase-intro {
+    color: #bdb5a5;
+    margin: 10px auto 45px;
+    animation: aparecer 2s ease;
+}
 
-        .p3 { grid-column: 6; grid-row: 1; }
-        .p4 { grid-column: 7; grid-row: 1; }
+/* FOTOS 3D */
 
-        .p5 { grid-column: 1; grid-row: 2; }
-        .p6 { grid-column: 2; grid-row: 2; }
-        .p7 { grid-column: 3; grid-row: 2; }
-        .p8 { grid-column: 4; grid-row: 2; }
-        .p9 { grid-column: 5; grid-row: 2; }
-        .p10 { grid-column: 6; grid-row: 2; }
-        .p11 { grid-column: 7; grid-row: 2; }
+.galeria {
+    width: min(94vw, 430px);
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+    perspective: 1000px;
+}
 
-        .p12 { grid-column: 8; grid-row: 2; }
+.foto {
+    position: relative;
+    aspect-ratio: 1 / 1;
+    border-radius: 10px;
+    overflow: hidden;
+    background: #171717;
+    border: 1px solid #8d7950;
 
-        .p13 {
-            grid-column: 4 / span 2;
-            grid-row: 3;
-        }
+    box-shadow:
+        0 10px 20px rgba(0,0,0,.7),
+        0 0 15px rgba(201,181,138,.12);
 
-        .carta {
-            max-width: 650px;
-            margin: 70px auto 0;
-            padding: 35px 25px;
-            border-top: 1px solid #6f6044;
-            border-bottom: 1px solid #6f6044;
-        }
+    transform:
+        rotateX(var(--rx, 0deg))
+        rotateY(var(--ry, 0deg))
+        translateZ(var(--tz, 0px));
 
-        .carta h2 {
-            font-weight: normal;
-            font-size: 25px;
-            margin-bottom: 25px;
-        }
+    transition:
+        transform .25s ease,
+        box-shadow .25s ease;
 
-        .carta p {
-            color: #c8c0b2;
-            font-size: 17px;
-            line-height: 1.8;
-        }
+    animation: entrada .8s ease both;
+}
 
-        .final {
-            margin-top: 50px;
-            color: #d8c28f;
-            font-size: 24px;
-        }
+.foto:active {
+    transform: scale(.94) translateZ(35px);
+    box-shadow:
+        0 15px 30px rgba(0,0,0,.9),
+        0 0 25px rgba(216,194,143,.3);
+}
 
-        @keyframes brillo {
-            from {
-                opacity: 0.4;
-                transform: scale(0.9);
-            }
+.foto img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
 
-            to {
-                opacity: 1;
-                transform: scale(1.1);
-            }
-        }
+/* Cada foto aparece con un pequeño retraso */
 
-        @keyframes flotar {
-            0%, 100% {
-                transform: translateY(0);
-            }
+.foto:nth-child(1) { animation-delay: .05s; }
+.foto:nth-child(2) { animation-delay: .12s; }
+.foto:nth-child(3) { animation-delay: .19s; }
+.foto:nth-child(4) { animation-delay: .26s; }
+.foto:nth-child(5) { animation-delay: .33s; }
+.foto:nth-child(6) { animation-delay: .40s; }
+.foto:nth-child(7) { animation-delay: .47s; }
+.foto:nth-child(8) { animation-delay: .54s; }
+.foto:nth-child(9) { animation-delay: .61s; }
+.foto:nth-child(10) { animation-delay: .68s; }
+.foto:nth-child(11) { animation-delay: .75s; }
+.foto:nth-child(12) { animation-delay: .82s; }
+.foto:nth-child(13) { animation-delay: .89s; }
 
-            50% {
-                transform: translateY(-4px);
-            }
-        }
+@keyframes entrada {
+    from {
+        opacity: 0;
+        transform: translateY(35px) scale(.7) rotateX(20deg);
+    }
 
-    </style>
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* MENSAJE */
+
+.carta {
+    max-width: 650px;
+    margin: 70px auto 0;
+    padding: 35px 25px;
+    border-top: 1px solid #6f6044;
+    border-bottom: 1px solid #6f6044;
+    animation: aparecer 2s ease;
+}
+
+.carta h2 {
+    font-weight: normal;
+    font-size: 25px;
+    margin-bottom: 25px;
+}
+
+.carta p {
+    color: #c8c0b2;
+    font-size: 17px;
+    line-height: 1.8;
+}
+
+.final {
+    margin-top: 45px;
+    color: #d8c28f;
+    font-size: 28px;
+    animation: brillo 2s infinite alternate;
+}
+
+/* ANIMACIONES */
+
+@keyframes aparecer {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes brillo {
+    from {
+        opacity: .4;
+        transform: scale(.9);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1.1);
+    }
+}
+
+/* CELULAR */
+
+@media (max-width: 430px) {
+
+    h1 {
+        font-size: 28px;
+    }
+
+    .galeria {
+        width: 94vw;
+        gap: 6px;
+    }
+
+    .foto {
+        border-radius: 8px;
+    }
+
+}
+</style>
 </head>
 
 <body>
 
-    <section id="inicio">
+<!-- LUCES -->
 
-        <div class="estrella">✦</div>
-
-        <h1>Para Mirko David</h1>
-
-        <p class="subtitulo">
-            Tengo algo preparado para ti
-        </p>
-
-        <button onclick="comenzar()">
-            Toca para comenzar
-        </button>
-
-    </section>
+<div class="particulas">
+    <div class="particula"></div>
+    <div class="particula"></div>
+    <div class="particula"></div>
+    <div class="particula"></div>
+    <div class="particula"></div>
+    <div class="particula"></div>
+    <div class="particula"></div>
+</div>
 
 
-    <section id="contenido">
+<!-- INICIO -->
 
-        <div class="estrella">✦</div>
+<section id="inicio">
 
-        <h1 class="titulo">
-            Feliz cumpleaños, Mirko 🎂
-        </h1>
+    <div class="estrella">✦</div>
 
-        <p class="frase-intro">
-            Hay personas que merecen una pequeña sorpresa.
-        </p>
+    <h1>Para Mirko David</h1>
 
+    <p class="subtitulo">
+        Tengo algo preparado para ti
+    </p>
 
-        <div class="corazon">
+    <button onclick="comenzar()">
+        Toca para comenzar
+    </button>
 
-            <div class="foto p1">
-                <img src="4e2ea9b51d95d24c962bd61b826a54ff.jpg">
-            </div>
-
-            <div class="foto p2">
-                <img src="56114d0177bd2e3e569f2fa9ea031113.jpg">
-            </div>
-
-            <div class="foto p3">
-                <img src="5f0af6b6c19d752a661470db74b17970.jpg">
-            </div>
-
-            <div class="foto p4">
-                <img src="627b38dd8ad4ca20763cb876165334cd.jpg">
-            </div>
+</section>
 
 
-            <div class="foto p5">
-                <img src="6e6ca410236b27f9fed21dd01edadd4f.jpg">
-            </div>
+<!-- CONTENIDO -->
 
-            <div class="foto p6">
-                <img src="765428eaccf9cc88c89561f66c6caaa3.jpg">
-            </div>
+<section id="contenido">
 
-            <div class="foto p7">
-                <img src="88eda346447054697a298be3475f9c28.jpg">
-            </div>
+    <div class="estrella">✦</div>
 
-            <div class="foto p8">
-                <img src="983391e84e170b9e679d3c93299d3378.jpg">
-            </div>
+    <h1 class="titulo">
+        Feliz cumpleaños, Mirko 🎂
+    </h1>
 
-            <div class="foto p9">
-                <img src="9d63ef60e34a1d38775b53bb556f37bb.jpg">
-            </div>
+    <p class="frase-intro">
+        Hay personas que merecen una pequeña sorpresa.
+    </p>
 
-            <div class="foto p10">
-                <img src="a7e6280c61ff034fecc98313413907cc.jpg">
-            </div>
 
-            <div class="foto p11">
-                <img src="a93d92fd412eee58e485b6592964344e.jpg">
-            </div>
+    <div class="galeria">
 
-            <div class="foto p12">
-                <img src="a9d7e60f4ec590ca3e076f54bb25734c.jpg">
-            </div>
-
-            <div class="foto p13">
-                <img src="d34f514777d26503d5c6d17d656ff21b.jpg">
-            </div>
-
+        <div class="foto">
+            <img src="4e2ea9b51d95d24c962bd61b826a54ff.jpg">
         </div>
 
+        <div class="foto">
+            <img src="56114d0177bd2e3e569f2fa9ea031113.jpg">
+        </div>
 
-        <div class="carta">
+        <div class="foto">
+            <img src="5f0af6b6c19d752a661470db74b17970.jpg">
+        </div>
 
-            <h2>Un pequeño mensaje</h2>
+        <div class="foto">
+            <img src="627b38dd8ad4ca20763cb876165334cd.jpg">
+        </div>
 
-            <p>
-                Espero que tengas muchos momentos felices
+        <div class="foto">
+            <img src="6e6ca410236b27f9fed21dd01edadd4f.jpg">
+        </div>
+
+        <div class="foto">
+            <img src="765428eaccf9cc88c89561f66c6caaa3.jpg">
+        </div>
+
+        <div class="foto">
+            <img src="88eda346447054697a298be3475f9c28.jpg">
+        </div>
+
+        <div class="foto">
+            <img src="983391e84e170b9e679d3c93299d3378.jpg">
+        </div>
+
+        <div class="foto">
+            <img src="9d63ef60e34a1d38775b53bb556f37bb.jpg">
+        </div>
+
+        <div class="foto">
+            <img src="a7e6280c61ff034fecc98313413907cc.jpg">
+        </div>
+
+        <div class="foto">
+            <img src="a93d92fd412eee58e485b6592964344e.jpg">
+        </div>
+
+        <div class="foto">
+            <img src="a9d7e60f4ec590ca3e076f54bb25734c.jpg">
+        </div>
+
+        <div class="foto">
+            <img src="d34f514777d26503d5c6d17d656ff21b.jpg">
+        </div>
+
+    </div>
+
+
+    <div class="carta">
+
+        <h2>Un pequeño mensaje</h2>
+
+        <p>
+            Espero que tengas muchos momentos felices,
+            nuevas experiencias y muchas razones para sonreír.
+        </p>
+
+        <div class="final">
+            ✦
+        </div>
+
+    </div>
+
+</section>
+
+
+<script>
+
+/* ENTRAR */
+
+function comenzar() {
+
+    document.getElementById("inicio").style.display = "none";
+
+    document.getElementById("contenido").style.display = "block";
+
+}
+
+
+/* EFECTO 3D CON EL MOVIMIENTO DEL DEDO */
+
+const fotos = document.querySelectorAll(".foto");
+
+fotos.forEach(function(foto) {
+
+    foto.addEventListener("touchmove", function(e) {
+
+        const touch = e.touches[0];
+
+        const rect = foto.getBoundingClientRect();
+
+        const x = touch.clientX - rect.left;
+        const y = touch.clientY - rect.top;
+
+        const centroX = rect.width / 2;
+        const centroY = rect.height / 2;
+
+        const rotacionY = (x - centroX) / 12;
+        const rotacionX = -(y - centroY) / 12;
+
+        foto.style.setProperty("--rx", rotacionX + "deg");
+        foto.style.setProperty("--ry", rotacionY + "deg");
+        foto.style.setProperty("--tz", "20px");
+
+    });
+
+    foto.addEventListener("touchend", function() {
+
+        foto.style.setProperty("--rx", "0deg");
+        foto.style.setProperty("--ry", "0deg");
+        foto.style.setProperty("--tz", "0px");
+
+    });
+
+});
+
+</script>
+
+</body>
+</html>
