@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Para Mirko David</title>
 
 <style>
@@ -12,89 +13,359 @@
     padding:0;
 }
 
-html,body{
-    width:100%;
-    min-height:100%;
+body{
+    min-height:100vh;
+    font-family:Georgia,serif;
+    color:white;
+    background:
+        radial-gradient(circle at 50% 20%, #6d4b55 0%, #251d2c 35%, #090912 75%);
     overflow-x:hidden;
 }
 
-body{
-    background:#05030a;
-    color:white;
-    font-family:Georgia,serif;
+/* PANTALLA INICIAL */
+#inicio{
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:25px;
 }
 
-/* =========================
-   FONDO GALAXIA
-========================= */
-
-#universo{
-    position:fixed;
-    inset:0;
-    overflow:hidden;
-    pointer-events:none;
-    background:
-        radial-gradient(circle at 50% 45%,
-        rgba(130,35,90,.35) 0%,
-        rgba(35,10,35,.25) 25%,
-        rgba(5,3,10,1) 70%);
+.flor{
+    font-size:70px;
+    margin-bottom:20px;
+    animation:flotar 3s ease-in-out infinite;
 }
 
-.nebulosa{
+#inicio h1{
+    font-size:35px;
+    margin-bottom:12px;
+}
+
+#inicio p{
+    font-size:18px;
+    opacity:.85;
+    margin-bottom:30px;
+}
+
+.boton{
+    border:none;
+    padding:15px 28px;
+    border-radius:30px;
+    background:#e9c6a8;
+    color:#271b20;
+    font-size:17px;
+    font-weight:bold;
+    cursor:pointer;
+    box-shadow:0 0 25px rgba(255,220,190,.35);
+}
+
+/* CONTENIDO */
+#contenido{
+    display:none;
+    min-height:100vh;
+    padding:35px 10px 70px;
+    text-align:center;
+}
+
+.titulo{
+    font-size:30px;
+    margin-bottom:10px;
+}
+
+.subtitulo{
+    opacity:.8;
+    margin-bottom:25px;
+}
+
+/* ÁREA DEL CORAZÓN */
+.corazon{
+    position:relative;
+    width:360px;
+    height:390px;
+    max-width:96vw;
+    margin:10px auto 35px;
+}
+
+/* BRILLO DETRÁS */
+.corazon::before{
+    content:"";
     position:absolute;
-    width:70vw;
-    height:70vw;
-    max-width:650px;
-    max-height:650px;
+    width:270px;
+    height:270px;
+    left:45px;
+    top:55px;
+    background:rgba(255,190,210,.13);
+    filter:blur(55px);
     border-radius:50%;
-    left:50%;
-    top:50%;
-    transform:translate(-50%,-50%);
-    background:
-        radial-gradient(circle,
-        rgba(255,100,170,.14),
-        rgba(120,40,180,.07) 35%,
-        transparent 70%);
-    filter:blur(25px);
-    animation:respirar 7s ease-in-out infinite alternate;
 }
 
-@keyframes respirar{
-    from{
-        transform:translate(-50%,-50%) scale(.9);
-        opacity:.65;
-    }
-    to{
-        transform:translate(-50%,-50%) scale(1.12);
-        opacity:1;
-    }
-}
-
-.estrella{
+/* FOTOS */
+.foto{
     position:absolute;
-    width:3px;
-    height:3px;
-    border-radius:50%;
-    background:white;
-    box-shadow:0 0 8px white;
-    animation:flotar linear infinite;
+    width:88px;
+    height:105px;
+    object-fit:cover;
+    border-radius:12px;
+    border:4px solid rgba(255,255,255,.9);
+    box-shadow:
+        0 8px 20px rgba(0,0,0,.45),
+        0 0 12px rgba(255,220,220,.18);
+    transition:transform .35s ease, z-index .35s ease;
+    background:#222;
 }
 
+.foto:hover{
+    transform:scale(1.12) rotate(0deg) !important;
+    z-index:20;
+}
+
+/*
+   POSICIONES DEL CORAZÓN
+   Las 13 fotos forman:
+       1       2
+     3   4 5   6
+   7   8  9  10  11
+     12   13
+       ♥
+*/
+
+/* fila superior */
+.f1{
+    left:70px;
+    top:15px;
+    transform:rotate(-12deg);
+}
+
+.f2{
+    left:202px;
+    top:15px;
+    transform:rotate(12deg);
+}
+
+/* segunda fila */
+.f3{
+    left:25px;
+    top:75px;
+    transform:rotate(-8deg);
+}
+
+.f4{
+    left:92px;
+    top:70px;
+    transform:rotate(-3deg);
+}
+
+.f5{
+    left:158px;
+    top:70px;
+    transform:rotate(3deg);
+}
+
+.f6{
+    left:225px;
+    top:75px;
+    transform:rotate(8deg);
+}
+
+/* tercera fila */
+.f7{
+    left:5px;
+    top:140px;
+    transform:rotate(-8deg);
+}
+
+.f8{
+    left:72px;
+    top:140px;
+    transform:rotate(-3deg);
+}
+
+.f9{
+    left:138px;
+    top:140px;
+    transform:rotate(2deg);
+}
+
+.f10{
+    left:204px;
+    top:140px;
+    transform:rotate(4deg);
+}
+
+.f11{
+    left:271px;
+    top:140px;
+    transform:rotate(8deg);
+}
+
+/* punta del corazón */
+.f12{
+    left:55px;
+    top:210px;
+    transform:rotate(-7deg);
+}
+
+.f13{
+    left:205px;
+    top:210px;
+    transform:rotate(7deg);
+}
+
+/* MENSAJE */
+.mensaje{
+    max-width:500px;
+    margin:0 auto;
+    padding:25px;
+    border-radius:22px;
+    background:rgba(255,255,255,.08);
+    border:1px solid rgba(255,255,255,.15);
+    backdrop-filter:blur(10px);
+    line-height:1.7;
+    font-size:17px;
+}
+
+/* ANIMACIÓN */
 @keyframes flotar{
-    0%{
-        transform:translateY(110vh) scale(.3);
-        opacity:0;
+    0%,100%{
+        transform:translateY(0);
     }
-    15%{opacity:.8;}
-    80%{opacity:.8;}
-    100%{
-        transform:translateY(-10vh) scale(1);
-        opacity:0;
+    50%{
+        transform:translateY(-12px);
     }
 }
 
-/* =========================
-   INICIO
-========================= */
+/* CELULAR */
+@media(max-width:390px){
 
-#inicio
+    .corazon{
+        transform:scale(.88);
+        transform-origin:top center;
+        margin-bottom:-25px;
+    }
+
+    .titulo{
+        font-size:27px;
+    }
+
+    .foto{
+        width:80px;
+        height:96px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- INICIO -->
+<section id="inicio">
+
+    <div class="flor">🌻</div>
+
+    <h1>Para Mirko David</h1>
+
+    <p>Tengo algo especial para ti...</p>
+
+    <button class="boton" onclick="comenzar()">
+        Toca para iniciar
+    </button>
+
+</section>
+
+
+<!-- CONTENIDO -->
+<section id="contenido">
+
+    <h1 class="titulo">Feliz cumpleaños, Mirko</h1>
+
+    <p class="subtitulo">
+        Un pequeño recuerdo hecho especialmente para ti.
+    </p>
+
+
+    <!-- CORAZÓN DE FOTOS -->
+    <div class="corazon">
+
+        <img class="foto f1"
+        src="4e2ea9b51d95d24c962bd61b826a54ff.jpg">
+
+        <img class="foto f2"
+        src="56114d0177bd2e3e569f2fa9ea031113.jpg">
+
+        <img class="foto f3"
+        src="5f0af6b6c19d752a661470db74b17970.jpg">
+
+        <img class="foto f4"
+        src="627b38dd8ad4ca20763cb876165334cd.jpg">
+
+        <img class="foto f5"
+        src="6e6ca410236b27f9fed21dd01edadd4f.jpg">
+
+        <img class="foto f6"
+        src="765428eaccf9cc88c89561f66c6caaa3.jpg">
+
+        <img class="foto f7"
+        src="88eda346447054697a298be3475f9c28.jpg">
+
+        <img class="foto f8"
+        src="983391e84e170b9e679d3c93299d3378.jpg">
+
+        <img class="foto f9"
+        src="9d63ef60e34a1d38775b53bb556f37bb.jpg">
+
+        <img class="foto f10"
+        src="a7e6280c61ff034fecc98313413907cc.jpg">
+
+        <img class="foto f11"
+        src="a93d92fd412eee58e485b6592964344e.jpg">
+
+        <img class="foto f12"
+        src="a9d7e60f4ec590ca3e076f54bb25734c.jpg">
+
+        <img class="foto f13"
+        src="d34f514777d26503d5c6d17d656ff21b.jpg">
+
+    </div>
+
+
+    <!-- MENSAJE -->
+    <div class="mensaje">
+
+        <p>
+            Espero que este nuevo año de tu vida esté lleno
+            de momentos bonitos, nuevas experiencias y muchas
+            razones para sonreír.
+        </p>
+
+        <br>
+
+        <p>
+            Feliz cumpleaños, Mirko David. 🎂
+        </p>
+
+    </div>
+
+</section>
+
+
+<script>
+
+function comenzar(){
+
+    document.getElementById("inicio").style.display="none";
+
+    document.getElementById("contenido").style.display="block";
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+}
+
+</script>
+
+</body>
+    </html>
