@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Para Mirko David</title>
 
     <style>
@@ -74,22 +73,22 @@
             margin-bottom: 45px;
         }
 
-        /* CORAZÓN */
+        /* CORAZÓN DE 13 FOTOS */
+
         .corazon {
-            width: min(94vw, 420px);
+            width: min(92vw, 400px);
             margin: 0 auto;
             display: grid;
             grid-template-columns: repeat(7, 1fr);
-            gap: 5px;
+            gap: 6px;
         }
 
         .foto {
-            width: 100%;
             aspect-ratio: 1 / 1;
-            border-radius: 7px;
             overflow: hidden;
-            background: #171717;
+            border-radius: 8px;
             border: 1px solid #8d7950;
+            background: #171717;
             box-shadow: 0 8px 15px rgba(0,0,0,0.6);
         }
 
@@ -102,18 +101,6 @@
 
         .vacio {
             visibility: hidden;
-        }
-
-        .frase {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            aspect-ratio: 1 / 1;
-            color: #d8c28f;
-            font-size: 10px;
-            line-height: 1.2;
-            padding: 4px;
-            text-align: center;
         }
 
         .carta {
@@ -190,7 +177,7 @@
 
         <div class="corazon">
 
-            <!-- FILA 1:     ♥ ♥ -->
+            <!-- FILA 1 -->
             <div class="vacio"></div>
 
             <div class="foto">
@@ -245,5 +232,69 @@
 
 
             <!-- FILA 3 -->
+            <div class="vacio"></div>
+
+            <div class="vacio"></div>
+
             <div class="foto">
-                <img src="a9d7e60f4ec590ca3e076f54bb
+                <img src="a9d7e60f4ec590ca3e076f54bb25734c.jpg">
+            </div>
+
+            <div class="foto">
+                <img src="d34f514777d26503d5c6d17d656ff21b.jpg">
+            </div>
+
+            <div class="foto">
+                <img src="4e2ea9b51d95d24c962bd61b826a54ff.jpg">
+            </div>
+
+            <div class="vacio"></div>
+
+            <div class="vacio"></div>
+
+
+        </div>
+
+
+        <div class="carta">
+
+            <h2>Un pequeño mensaje</h2>
+
+            <p>
+                Espero que tengas muchos momentos felices.
+            </p>
+
+            <div class="final">
+                ✦
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <audio id="musica" loop>
+        <source src="musica.mp3" type="audio/mpeg">
+    </audio>
+
+
+    <script>
+
+        function comenzar() {
+
+            document.getElementById("inicio").style.display = "none";
+
+            document.getElementById("contenido").style.display = "block";
+
+            const musica = document.getElementById("musica");
+
+            musica.play().catch(function() {
+                console.log("El navegador bloqueó el audio.");
+            });
+
+        }
+
+    </script>
+
+</body>
+</html>
