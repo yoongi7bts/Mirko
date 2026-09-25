@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Para Mirko David</title>
 
     <style>
@@ -37,3 +36,355 @@
         h1 {
             font-size: 32px;
             font-weight: normal;
+            margin: 15px 0 10px;
+        }
+
+        .subtitulo {
+            color: #bdb5a5;
+            font-size: 16px;
+            margin-bottom: 30px;
+        }
+
+        button {
+            background: transparent;
+            color: #f1e7d0;
+            border: 1px solid #c9b58a;
+            padding: 13px 28px;
+            border-radius: 30px;
+            font-size: 16px;
+            font-family: Georgia, serif;
+            cursor: pointer;
+        }
+
+        #contenido {
+            display: none;
+            min-height: 100vh;
+            text-align: center;
+            padding: 70px 10px;
+        }
+
+        .titulo {
+            font-size: 30px;
+            font-weight: normal;
+        }
+
+        .frase-intro {
+            color: #bdb5a5;
+            margin-top: 10px;
+            margin-bottom: 45px;
+        }
+
+        .corazon {
+            width: 100%;
+            max-width: 390px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 5px;
+        }
+
+        .foto {
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            border-radius: 7px;
+            overflow: hidden;
+            background: #171717;
+            border: 1px solid #8d7950;
+            box-shadow: 0 8px 15px rgba(0,0,0,0.6);
+        }
+
+        .foto img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .vacio {
+            visibility: hidden;
+        }
+
+        .frase {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            aspect-ratio: 1 / 1;
+            color: #d8c28f;
+            font-size: 10px;
+            line-height: 1.2;
+            padding: 4px;
+            text-align: center;
+        }
+
+        .carta {
+            max-width: 650px;
+            margin: 70px auto 0;
+            padding: 35px 25px;
+            border-top: 1px solid #6f6044;
+            border-bottom: 1px solid #6f6044;
+        }
+
+        .carta h2 {
+            font-weight: normal;
+            font-size: 25px;
+            margin-bottom: 25px;
+        }
+
+        .carta p {
+            color: #c8c0b2;
+            font-size: 17px;
+            line-height: 1.8;
+        }
+
+        .final {
+            margin-top: 50px;
+            color: #d8c28f;
+            font-size: 24px;
+        }
+
+        @keyframes brillo {
+            from {
+                opacity: 0.4;
+                transform: scale(0.9);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1.1);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <section id="inicio">
+
+        <div class="estrella">✦</div>
+
+        <h1>Para Mirko David</h1>
+
+        <p class="subtitulo">
+            Tengo algo preparado para ti
+        </p>
+
+        <button onclick="comenzar()">
+            Toca para comenzar
+        </button>
+
+    </section>
+
+
+    <section id="contenido">
+
+        <div class="estrella">✦</div>
+
+        <h1 class="titulo">
+            Feliz cumpleaños, Mirko 🎂
+        </h1>
+
+        <p class="frase-intro">
+            Hay personas que merecen una pequeña sorpresa.
+        </p>
+
+
+        <div class="corazon">
+
+            <!-- FILA 1 -->
+            <div class="vacio"></div>
+            <div class="vacio"></div>
+
+            <div class="foto">
+                <img src="4e2ea9b51d95d24c962bd61b826a54ff.jpg">
+            </div>
+
+            <div class="foto">
+                <img src="56114d0177bd2e3e569f2fa9ea031113.jpg">
+            </div>
+
+            <div class="foto">
+                <img src="5f0af6b6c19d752a661470db74b17970.jpg">
+            </div>
+
+            <div class="vacio"></div>
+            <div class="vacio"></div>
+
+
+            <!-- FILA 2 -->
+            <div class="vacio"></div>
+
+            <div class="foto">
+                <img src="627b38dd8ad4ca20763cb876165334cd.jpg">
+            </div>
+
+            <div class="foto">
+                <img src="6e6ca410236b27f9fed21dd01edadd4f.jpg">
+            </div>
+
+            <div class="foto">
+                <img src="765428eaccf9cc88c89561f66c6caaa3.jpg">
+            </div>
+
+            <div class="foto">
+                <img src="88eda346447054697a298be3475f9c28.jpg">
+            </div>
+
+            <div class="foto">
+                <img src="983391e84e170b9e679d3c93299d3378.jpg">
+            </div>
+
+            <div class="vacio"></div>
+
+
+            <!-- FILA 3 -->
+            <div class="foto">
+                <img src="9d63ef60e34a1d38775b53bb556f37bb.jpg">
+            </div>
+
+            <div class="foto">
+                <img src="a7e6280c61ff034fecc98313413907cc.jpg">
+            </div>
+
+            <div class="foto">
+                <img src="a93d92fd412eee58e485b6592964344e.jpg">
+            </div>
+
+            <div class="frase">
+                Siempre hay<br>
+                algo que celebrar.
+            </div>
+
+            <div class="foto">
+                <img src="a9d7e60f4ec590ca3e076f54bb25734c.jpg">
+            </div>
+
+            <div class="foto">
+                <img src="d34f514777d26503d5c6d17d656ff21b.jpg">
+            </div>
+
+            <div class="foto">
+                <img src="4e2ea9b51d95d24c962bd61b826a54ff.jpg">
+            </div>
+
+
+            <!-- FILA 4 -->
+            <div class="foto">
+                <img src="56114d0177bd2e3e569f2fa9ea031113.jpg">
+            </div>
+
+            <div class="foto">
+                <img src="5f0af6b6c19d752a661470db74b17970.jpg">
+            </div>
+
+            <div class="foto">
+                <img src="627b38dd8ad4ca20763cb876165334cd.jpg">
+            </div>
+
+            <div class="frase">
+                Por muchos<br>
+                momentos más.
+            </div>
+
+            <div class="foto">
+                <img src="6e6ca410236b27f9fed21dd01edadd4f.jpg">
+            </div>
+
+            <div class="foto">
+                <img src="765428eaccf9cc88c89561f66c6caaa3.jpg">
+            </div>
+
+            <div class="foto">
+                <img src="88eda346447054697a298be3475f9c28.jpg">
+            </div>
+
+
+            <!-- FILA 5 -->
+            <div class="vacio"></div>
+
+            <div class="foto">
+                <img src="983391e84e170b9e679d3c93299d3378.jpg">
+            </div>
+
+            <div class="foto">
+                <img src="9d63ef60e34a1d38775b53bb556f37bb.jpg">
+            </div>
+
+            <div class="foto">
+                <img src="a7e6280c61ff034fecc98313413907cc.jpg">
+            </div>
+
+            <div class="foto">
+                <img src="a93d92fd412eee58e485b6592964344e.jpg">
+            </div>
+
+            <div class="foto">
+                <img src="a9d7e60f4ec590ca3e076f54bb25734c.jpg">
+            </div>
+
+            <div class="vacio"></div>
+
+
+            <!-- FILA 6 -->
+            <div class="vacio"></div>
+            <div class="vacio"></div>
+
+            <div class="foto">
+                <img src="d34f514777d26503d5c6d17d656ff21b.jpg">
+            </div>
+
+            <div class="foto">
+                <img src="4e2ea9b51d95d24c962bd61b826a54ff.jpg">
+            </div>
+
+            <div class="foto">
+                <img src="56114d0177bd2e3e569f2fa9ea031113.jpg">
+            </div>
+
+            <div class="vacio"></div>
+            <div class="vacio"></div>
+
+        </div>
+
+
+        <div class="carta">
+
+            <h2>Un pequeño mensaje</h2>
+
+            <p>
+                Espero que tengas muchos momentos felices.
+            </p>
+
+            <div class="final">
+                ✦
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <audio id="musica" loop>
+        <source src="musica.mp3" type="audio/mpeg">
+    </audio>
+
+
+    <script>
+
+        function comenzar() {
+
+            document.getElementById("inicio").style.display = "none";
+
+            document.getElementById("contenido").style.display = "block";
+
+            const musica = document.getElementById("musica");
+
+            musica.play().catch(function() {
+                console.log("El navegador bloqueó el audio.");
+            });
+
+        }
+
+    </script>
+
+</body>
+            </html>
