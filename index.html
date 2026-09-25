@@ -3,9 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Para Mirko David</title>
 
     <style>
+
         * {
             box-sizing: border-box;
         }
@@ -53,6 +55,11 @@
             border-radius: 30px;
             font-size: 16px;
             font-family: Georgia, serif;
+            cursor: pointer;
+        }
+
+        button:active {
+            transform: scale(0.94);
         }
 
         #contenido {
@@ -73,23 +80,31 @@
             margin-bottom: 45px;
         }
 
-        /* CORAZÓN DE 13 FOTOS */
+        /* CORAZÓN */
 
         .corazon {
-            width: min(92vw, 400px);
+            width: 100%;
+            max-width: 420px;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: repeat(7, 1fr);
-            gap: 6px;
+            grid-template-columns: repeat(8, 1fr);
+            gap: 5px;
+            align-items: center;
         }
 
         .foto {
+            width: 100%;
             aspect-ratio: 1 / 1;
-            overflow: hidden;
             border-radius: 8px;
-            border: 1px solid #8d7950;
+            overflow: hidden;
             background: #171717;
-            box-shadow: 0 8px 15px rgba(0,0,0,0.6);
+            border: 1px solid #8d7950;
+
+            box-shadow:
+                0 8px 15px rgba(0,0,0,0.6),
+                0 0 10px rgba(201,181,138,0.12);
+
+            animation: flotar 4s ease-in-out infinite;
         }
 
         .foto img {
@@ -101,6 +116,29 @@
 
         .vacio {
             visibility: hidden;
+        }
+
+        /* POSICIONES DEL CORAZÓN */
+
+        .p1 { grid-column: 2; grid-row: 1; }
+        .p2 { grid-column: 3; grid-row: 1; }
+
+        .p3 { grid-column: 6; grid-row: 1; }
+        .p4 { grid-column: 7; grid-row: 1; }
+
+        .p5 { grid-column: 1; grid-row: 2; }
+        .p6 { grid-column: 2; grid-row: 2; }
+        .p7 { grid-column: 3; grid-row: 2; }
+        .p8 { grid-column: 4; grid-row: 2; }
+        .p9 { grid-column: 5; grid-row: 2; }
+        .p10 { grid-column: 6; grid-row: 2; }
+        .p11 { grid-column: 7; grid-row: 2; }
+
+        .p12 { grid-column: 8; grid-row: 2; }
+
+        .p13 {
+            grid-column: 4 / span 2;
+            grid-row: 3;
         }
 
         .carta {
@@ -140,6 +178,17 @@
                 transform: scale(1.1);
             }
         }
+
+        @keyframes flotar {
+            0%, 100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-4px);
+            }
+        }
+
     </style>
 </head>
 
@@ -177,81 +226,58 @@
 
         <div class="corazon">
 
-            <!-- FILA 1 -->
-            <div class="vacio"></div>
-
-            <div class="foto">
+            <div class="foto p1">
                 <img src="4e2ea9b51d95d24c962bd61b826a54ff.jpg">
             </div>
 
-            <div class="foto">
+            <div class="foto p2">
                 <img src="56114d0177bd2e3e569f2fa9ea031113.jpg">
             </div>
 
-            <div class="vacio"></div>
-
-            <div class="foto">
+            <div class="foto p3">
                 <img src="5f0af6b6c19d752a661470db74b17970.jpg">
             </div>
 
-            <div class="foto">
+            <div class="foto p4">
                 <img src="627b38dd8ad4ca20763cb876165334cd.jpg">
             </div>
 
-            <div class="vacio"></div>
 
-
-            <!-- FILA 2 -->
-            <div class="foto">
+            <div class="foto p5">
                 <img src="6e6ca410236b27f9fed21dd01edadd4f.jpg">
             </div>
 
-            <div class="foto">
+            <div class="foto p6">
                 <img src="765428eaccf9cc88c89561f66c6caaa3.jpg">
             </div>
 
-            <div class="foto">
+            <div class="foto p7">
                 <img src="88eda346447054697a298be3475f9c28.jpg">
             </div>
 
-            <div class="foto">
+            <div class="foto p8">
                 <img src="983391e84e170b9e679d3c93299d3378.jpg">
             </div>
 
-            <div class="foto">
+            <div class="foto p9">
                 <img src="9d63ef60e34a1d38775b53bb556f37bb.jpg">
             </div>
 
-            <div class="foto">
+            <div class="foto p10">
                 <img src="a7e6280c61ff034fecc98313413907cc.jpg">
             </div>
 
-            <div class="foto">
+            <div class="foto p11">
                 <img src="a93d92fd412eee58e485b6592964344e.jpg">
             </div>
 
-
-            <!-- FILA 3 -->
-            <div class="vacio"></div>
-
-            <div class="vacio"></div>
-
-            <div class="foto">
+            <div class="foto p12">
                 <img src="a9d7e60f4ec590ca3e076f54bb25734c.jpg">
             </div>
 
-            <div class="foto">
+            <div class="foto p13">
                 <img src="d34f514777d26503d5c6d17d656ff21b.jpg">
             </div>
-
-            <div class="foto">
-                <img src="4e2ea9b51d95d24c962bd61b826a54ff.jpg">
-            </div>
-
-            <div class="vacio"></div>
-
-            <div class="vacio"></div>
-
 
         </div>
 
@@ -261,40 +287,4 @@
             <h2>Un pequeño mensaje</h2>
 
             <p>
-                Espero que tengas muchos momentos felices.
-            </p>
-
-            <div class="final">
-                ✦
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <audio id="musica" loop>
-        <source src="musica.mp3" type="audio/mpeg">
-    </audio>
-
-
-    <script>
-
-        function comenzar() {
-
-            document.getElementById("inicio").style.display = "none";
-
-            document.getElementById("contenido").style.display = "block";
-
-            const musica = document.getElementById("musica");
-
-            musica.play().catch(function() {
-                console.log("El navegador bloqueó el audio.");
-            });
-
-        }
-
-    </script>
-
-</body>
-</html>
+                Espero que tengas muchos momentos felices
