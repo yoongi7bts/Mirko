@@ -10,74 +10,17 @@
     box-sizing: border-box;
 }
 
-html, body {
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    min-height: 100%;
-}
-
 body {
-    background:
-        radial-gradient(circle at 50% 20%, #292216 0%, #0b0b0b 45%, #050505 100%);
+    margin: 0;
+    background: #080808;
     color: #f1e7d0;
     font-family: Georgia, serif;
     overflow-x: hidden;
 }
 
-/* PARTICULAS */
-
-.particulas {
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    overflow: hidden;
-    z-index: 0;
-}
-
-.particula {
-    position: absolute;
-    width: 4px;
-    height: 4px;
-    background: #d8c28f;
-    border-radius: 50%;
-    opacity: 0;
-    animation: subir 7s linear infinite;
-}
-
-.particula:nth-child(1) { left: 10%; animation-delay: 0s; }
-.particula:nth-child(2) { left: 25%; animation-delay: 2s; }
-.particula:nth-child(3) { left: 40%; animation-delay: 4s; }
-.particula:nth-child(4) { left: 55%; animation-delay: 1s; }
-.particula:nth-child(5) { left: 70%; animation-delay: 3s; }
-.particula:nth-child(6) { left: 85%; animation-delay: 5s; }
-.particula:nth-child(7) { left: 50%; animation-delay: 6s; }
-
-@keyframes subir {
-    0% {
-        transform: translateY(110vh) scale(.4);
-        opacity: 0;
-    }
-
-    15% {
-        opacity: .8;
-    }
-
-    80% {
-        opacity: .5;
-    }
-
-    100% {
-        transform: translateY(-10vh) scale(1.2);
-        opacity: 0;
-    }
-}
-
-/* INICIO */
+/* PANTALLA INICIAL */
 
 #inicio {
-    position: relative;
-    z-index: 2;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -90,8 +33,8 @@ body {
 .estrella {
     color: #d8c28f;
     font-size: 45px;
+    text-shadow: 0 0 20px #d8c28f;
     animation: brillo 2s infinite alternate;
-    text-shadow: 0 0 18px rgba(216,194,143,.5);
 }
 
 h1 {
@@ -102,32 +45,24 @@ h1 {
 
 .subtitulo {
     color: #bdb5a5;
-    font-size: 16px;
-    margin-bottom: 32px;
+    margin-bottom: 30px;
 }
 
 button {
-    background: rgba(20,20,20,.6);
+    background: transparent;
     color: #f1e7d0;
     border: 1px solid #c9b58a;
     padding: 14px 28px;
     border-radius: 30px;
-    font-size: 16px;
     font-family: Georgia, serif;
-    box-shadow: 0 0 20px rgba(201,181,138,.12);
-    transition: .3s;
-}
-
-button:active {
-    transform: scale(.92);
+    font-size: 16px;
+    cursor: pointer;
 }
 
 /* CONTENIDO */
 
 #contenido {
     display: none;
-    position: relative;
-    z-index: 2;
     min-height: 100vh;
     text-align: center;
     padding: 65px 12px;
@@ -135,55 +70,82 @@ button:active {
 
 .titulo {
     font-size: 30px;
-    animation: aparecer 1.5s ease;
+    font-weight: normal;
 }
 
 .frase-intro {
     color: #bdb5a5;
-    margin: 10px auto 45px;
-    animation: aparecer 2s ease;
+    margin-bottom: 40px;
 }
 
-/* FOTOS 3D */
+/* LUCES */
+
+.luces {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: -1;
+}
+
+.luz {
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: #d8c28f;
+    animation: flotar 6s linear infinite;
+}
+
+.luz:nth-child(1) { left: 10%; animation-delay: 0s; }
+.luz:nth-child(2) { left: 25%; animation-delay: 2s; }
+.luz:nth-child(3) { left: 40%; animation-delay: 4s; }
+.luz:nth-child(4) { left: 60%; animation-delay: 1s; }
+.luz:nth-child(5) { left: 75%; animation-delay: 3s; }
+.luz:nth-child(6) { left: 90%; animation-delay: 5s; }
+
+@keyframes flotar {
+    from {
+        top: 100%;
+        opacity: 0;
+    }
+
+    20% {
+        opacity: 1;
+    }
+
+    to {
+        top: -10%;
+        opacity: 0;
+    }
+}
+
+/* GALERÍA */
 
 .galeria {
-    width: min(94vw, 430px);
+    width: 94%;
+    max-width: 430px;
     margin: auto;
+
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 8px;
-    perspective: 1000px;
+    gap: 7px;
+
+    perspective: 900px;
 }
 
 .foto {
-    position: relative;
     aspect-ratio: 1 / 1;
-    border-radius: 10px;
     overflow: hidden;
-    background: #171717;
+    border-radius: 9px;
     border: 1px solid #8d7950;
+    background: #151515;
 
     box-shadow:
-        0 10px 20px rgba(0,0,0,.7),
-        0 0 15px rgba(201,181,138,.12);
+        0 8px 18px rgba(0,0,0,.7),
+        0 0 12px rgba(216,194,143,.15);
 
-    transform:
-        rotateX(var(--rx, 0deg))
-        rotateY(var(--ry, 0deg))
-        translateZ(var(--tz, 0px));
-
-    transition:
-        transform .25s ease,
-        box-shadow .25s ease;
-
-    animation: entrada .8s ease both;
-}
-
-.foto:active {
-    transform: scale(.94) translateZ(35px);
-    box-shadow:
-        0 15px 30px rgba(0,0,0,.9),
-        0 0 25px rgba(216,194,143,.3);
+    transition: transform .25s ease;
 }
 
 .foto img {
@@ -193,49 +155,25 @@ button:active {
     display: block;
 }
 
-/* Cada foto aparece con un pequeño retraso */
+/* EFECTO 3D */
 
-.foto:nth-child(1) { animation-delay: .05s; }
-.foto:nth-child(2) { animation-delay: .12s; }
-.foto:nth-child(3) { animation-delay: .19s; }
-.foto:nth-child(4) { animation-delay: .26s; }
-.foto:nth-child(5) { animation-delay: .33s; }
-.foto:nth-child(6) { animation-delay: .40s; }
-.foto:nth-child(7) { animation-delay: .47s; }
-.foto:nth-child(8) { animation-delay: .54s; }
-.foto:nth-child(9) { animation-delay: .61s; }
-.foto:nth-child(10) { animation-delay: .68s; }
-.foto:nth-child(11) { animation-delay: .75s; }
-.foto:nth-child(12) { animation-delay: .82s; }
-.foto:nth-child(13) { animation-delay: .89s; }
-
-@keyframes entrada {
-    from {
-        opacity: 0;
-        transform: translateY(35px) scale(.7) rotateX(20deg);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-    }
+.foto:active {
+    transform: scale(.93) rotateX(5deg) rotateY(8deg);
 }
 
 /* MENSAJE */
 
 .carta {
     max-width: 650px;
-    margin: 70px auto 0;
-    padding: 35px 25px;
+    margin: 65px auto 0;
+    padding: 30px 20px;
     border-top: 1px solid #6f6044;
     border-bottom: 1px solid #6f6044;
-    animation: aparecer 2s ease;
 }
 
 .carta h2 {
-    font-weight: normal;
     font-size: 25px;
-    margin-bottom: 25px;
+    font-weight: normal;
 }
 
 .carta p {
@@ -245,24 +183,9 @@ button:active {
 }
 
 .final {
-    margin-top: 45px;
     color: #d8c28f;
     font-size: 28px;
-    animation: brillo 2s infinite alternate;
-}
-
-/* ANIMACIONES */
-
-@keyframes aparecer {
-    from {
-        opacity: 0;
-        transform: translateY(25px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+    margin-top: 40px;
 }
 
 @keyframes brillo {
@@ -280,36 +203,33 @@ button:active {
 /* CELULAR */
 
 @media (max-width: 430px) {
-
     h1 {
         font-size: 28px;
     }
 
+    .titulo {
+        font-size: 27px;
+    }
+
     .galeria {
-        width: 94vw;
-        gap: 6px;
+        gap: 5px;
     }
-
-    .foto {
-        border-radius: 8px;
-    }
-
 }
 </style>
 </head>
+
 
 <body>
 
 <!-- LUCES -->
 
-<div class="particulas">
-    <div class="particula"></div>
-    <div class="particula"></div>
-    <div class="particula"></div>
-    <div class="particula"></div>
-    <div class="particula"></div>
-    <div class="particula"></div>
-    <div class="particula"></div>
+<div class="luces">
+    <div class="luz"></div>
+    <div class="luz"></div>
+    <div class="luz"></div>
+    <div class="luz"></div>
+    <div class="luz"></div>
+    <div class="luz"></div>
 </div>
 
 
@@ -325,7 +245,7 @@ button:active {
         Tengo algo preparado para ti
     </p>
 
-    <button onclick="comenzar()">
+    <button type="button" onclick="abrirPagina()">
         Toca para comenzar
     </button>
 
@@ -413,9 +333,7 @@ button:active {
             nuevas experiencias y muchas razones para sonreír.
         </p>
 
-        <div class="final">
-            ✦
-        </div>
+        <div class="final">✦</div>
 
     </div>
 
@@ -424,53 +342,14 @@ button:active {
 
 <script>
 
-/* ENTRAR */
-
-function comenzar() {
+function abrirPagina() {
 
     document.getElementById("inicio").style.display = "none";
 
     document.getElementById("contenido").style.display = "block";
 
+    window.scrollTo(0, 0);
 }
-
-
-/* EFECTO 3D CON EL MOVIMIENTO DEL DEDO */
-
-const fotos = document.querySelectorAll(".foto");
-
-fotos.forEach(function(foto) {
-
-    foto.addEventListener("touchmove", function(e) {
-
-        const touch = e.touches[0];
-
-        const rect = foto.getBoundingClientRect();
-
-        const x = touch.clientX - rect.left;
-        const y = touch.clientY - rect.top;
-
-        const centroX = rect.width / 2;
-        const centroY = rect.height / 2;
-
-        const rotacionY = (x - centroX) / 12;
-        const rotacionX = -(y - centroY) / 12;
-
-        foto.style.setProperty("--rx", rotacionX + "deg");
-        foto.style.setProperty("--ry", rotacionY + "deg");
-        foto.style.setProperty("--tz", "20px");
-
-    });
-
-    foto.addEventListener("touchend", function() {
-
-        foto.style.setProperty("--rx", "0deg");
-        foto.style.setProperty("--ry", "0deg");
-        foto.style.setProperty("--tz", "0px");
-
-    });
-
-});
 
 </script>
 
